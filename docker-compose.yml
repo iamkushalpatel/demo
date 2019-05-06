@@ -1,5 +1,4 @@
 version: '2.1'
-
 services:
   demo:
     container_name: demo
@@ -7,6 +6,8 @@ services:
     build: .
     ports:
       - 8080:8080
+    networks: 
+      - backend
   mysql:
     container_name: mysql
     restart: always
@@ -17,3 +18,9 @@ services:
     - D:\MySQL:/var/lib/mysql
     ports:
       - "3306:3306"
+    networks: 
+      - backend
+networks:
+  backend:
+    driver: "bridge"
+      
