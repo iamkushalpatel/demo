@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  demo:
+    container_name: demo
+    image: demo
+    build: .
+    ports:
+      - 8080:8080
+  mysql:
+    container_name: mysql
+    restart: always
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 'test_pass'
+    volumes:
+    - D:\MySQL:/var/lib/mysql
+    ports:
+      - "3306:3306"
