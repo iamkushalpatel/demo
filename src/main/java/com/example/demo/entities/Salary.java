@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,6 +21,9 @@ public class Salary implements Serializable {
 	 */
 	private static final long serialVersionUID = 3012773733643618018L;
 
+	@EmbeddedId
+	private SalaryIdentity salaryIdentity;
+
 	@Column(name = "salary", nullable = false)
 	private Long salary;
 
@@ -29,6 +33,14 @@ public class Salary implements Serializable {
 
 	public Salary() {
 		super();
+	}
+
+	public SalaryIdentity getSalaryIdentity() {
+		return salaryIdentity;
+	}
+
+	public void setSalaryIdentity(SalaryIdentity salaryIdentity) {
+		this.salaryIdentity = salaryIdentity;
 	}
 
 	public Long getSalary() {
