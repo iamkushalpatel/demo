@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,9 +19,14 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employee implements Serializable {
 
-	public enum Gender {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6571692422580560267L;
+
+	public static enum Gender {
 		M, F
 	}
 
@@ -45,6 +53,13 @@ public class Employee {
 	@Column(name = "hire_date", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
+
+	@OneToMany(mappedBy = "titleIdentity.employee")
+	private List<Title> titles;
+
+	public Employee() {
+
+	}
 
 	public Long getEmpNo() {
 		return empNo;
@@ -92,6 +107,14 @@ public class Employee {
 
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
+	}
+
+	public List<Title> getTitles() {
+		return titles;
+	}
+
+	public void setTitles(List<Title> titles) {
+		this.titles = titles;
 	}
 
 }
