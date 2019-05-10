@@ -30,6 +30,7 @@ public class Title implements Serializable {
 	private Date toDate;
 
 	public Title() {
+		super();
 	}
 
 	public TitleIdentity getTitleIdentity() {
@@ -68,6 +69,7 @@ public class Title implements Serializable {
 		private Date fromDate;
 
 		public TitleIdentity() {
+			super();
 		}
 
 		public TitleIdentity(Employee employee, String title, Date fromDate) {

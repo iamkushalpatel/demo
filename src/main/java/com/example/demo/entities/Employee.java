@@ -58,8 +58,11 @@ public class Employee implements Serializable {
 	@OneToMany(mappedBy = "titleIdentity.employee", cascade = CascadeType.ALL)
 	private List<Title> titles;
 
-	public Employee() {
+	@OneToMany(mappedBy = "salaryIdentity.employee", cascade = CascadeType.ALL)
+	private List<Salary> salaries;
 
+	public Employee() {
+		super();
 	}
 
 	public Long getEmpNo() {
@@ -116,6 +119,14 @@ public class Employee implements Serializable {
 
 	public void setTitles(List<Title> titles) {
 		this.titles = titles;
+	}
+
+	public List<Salary> getSalaries() {
+		return salaries;
+	}
+
+	public void setSalaries(List<Salary> salaries) {
+		this.salaries = salaries;
 	}
 
 }
