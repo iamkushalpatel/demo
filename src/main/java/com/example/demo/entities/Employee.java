@@ -18,8 +18,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "employees")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "empNo")
 public class Employee implements Serializable {
 
 	/**
@@ -55,9 +58,11 @@ public class Employee implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "titleIdentity.employee", cascade = CascadeType.ALL)
 	private List<Title> titles;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "salaryIdentity.employee", cascade = CascadeType.ALL)
 	private List<Salary> salaries;
 

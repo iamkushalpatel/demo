@@ -13,8 +13,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "titles")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "titleIdentity")
 public class Title implements Serializable {
 
 	/**
@@ -50,13 +53,14 @@ public class Title implements Serializable {
 	}
 
 	@Embeddable
-	public class TitleIdentity implements Serializable {
+	public static class TitleIdentity implements Serializable {
 
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1429976690660223711L;
 
+		@JsonManagedReference
 		@ManyToOne
 		@JoinColumn(name = "emp_no")
 		private Employee employee;

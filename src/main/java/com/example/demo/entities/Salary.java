@@ -12,8 +12,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "salaries")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "salaryIdentity")
 public class Salary implements Serializable {
 
 	/**
@@ -59,13 +62,14 @@ public class Salary implements Serializable {
 		this.toDate = toDate;
 	}
 
-	public class SalaryIdentity implements Serializable {
+	public static class SalaryIdentity implements Serializable {
 
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 3678473176764457976L;
 
+		@JsonManagedReference
 		@ManyToOne
 		@JoinColumn(name = "emp_no")
 		private Employee employee;
