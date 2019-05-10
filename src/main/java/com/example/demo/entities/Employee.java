@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -54,7 +55,7 @@ public class Employee implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date hireDate;
 
-	@OneToMany(mappedBy = "titleIdentity.employee")
+	@OneToMany(mappedBy = "titleIdentity.employee", cascade = CascadeType.ALL)
 	private List<Title> titles;
 
 	public Employee() {
