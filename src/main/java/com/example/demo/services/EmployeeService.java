@@ -16,6 +16,6 @@ public interface EmployeeService {
 
 	public List<Employee> getAllEmployee();
 
-	public Page<Employee> getEmployeePage(int page, int size);
+	public Page<Employee> getPage(int page, int size);
 
 }

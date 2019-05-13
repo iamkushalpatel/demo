@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Page<Employee> getEmployeePage(int page, int size) {
+	public Page<Employee> getPage(int page, int size) {
 		return employeeRepository.findAll(PageRequest.of(page, size));
 	}
 

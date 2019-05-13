@@ -6,6 +6,6 @@ import com.example.demo.entities.Title;
 
 public interface TitleService {
 
-	public Page<Title> getTitlePage(int page, int size);
+	public Page<Title> getPage(int page, int size);
 
 }

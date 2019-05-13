@@ -16,7 +16,7 @@ public class TitleServiceImpl implements TitleService {
 	private TitleRepository titleRepository;
 
 	@Override
-	public Page<Title> getTitlePage(int page, int size) {
+	public Page<Title> getPage(int page, int size) {
 		return titleRepository.findAll(PageRequest.of(page, size));
 	}
 
