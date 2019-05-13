@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -62,6 +63,7 @@ public class Salary implements Serializable {
 		this.toDate = toDate;
 	}
 
+	@Embeddable
 	public static class SalaryIdentity implements Serializable {
 
 		/**

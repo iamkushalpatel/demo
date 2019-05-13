@@ -66,6 +66,14 @@ public class Employee implements Serializable {
 	@OneToMany(mappedBy = "salaryIdentity.employee", cascade = CascadeType.ALL)
 	private List<Salary> salaries;
 
+	@JsonBackReference
+	@OneToMany(mappedBy = "departmentEmployeeIdentity.employee", cascade = CascadeType.ALL)
+	private List<DepartmentEmployee> departmentEmployees;
+
+	@JsonBackReference
+	@OneToMany(mappedBy = "departmentManagerIdentity.employee", cascade = CascadeType.ALL)
+	private List<DepartmentManager> departmentManagers;
+
 	public Employee() {
 		super();
 	}
@@ -132,6 +140,22 @@ public class Employee implements Serializable {
 
 	public void setSalaries(List<Salary> salaries) {
 		this.salaries = salaries;
+	}
+
+	public List<DepartmentEmployee> getDepartmentEmployees() {
+		return departmentEmployees;
+	}
+
+	public void setDepartmentEmployees(List<DepartmentEmployee> departmentEmployees) {
+		this.departmentEmployees = departmentEmployees;
+	}
+
+	public List<DepartmentManager> getDepartmentManagers() {
+		return departmentManagers;
+	}
+
+	public void setDepartmentManagers(List<DepartmentManager> departmentManagers) {
+		this.departmentManagers = departmentManagers;
 	}
 
 }
