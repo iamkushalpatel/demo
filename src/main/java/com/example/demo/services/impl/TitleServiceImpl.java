@@ -11,6 +11,7 @@ import com.example.demo.services.TitleService;
 
 @Service
 public class TitleServiceImpl implements TitleService {
+
 	@Autowired
 	private TitleRepository titleRepository;
 
